@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flectra>
+    <data>
+
+        <record id="customer_details_form_view" model="ir.ui.view">
+            <field name="name">customer details form view</field>
+            <field name="model">customer.details</field>
+            <field name="arch" type="xml">
+                <form string="Customer Information">
+                    <header>
+                        <button name="button_ordered" string="Ordered" widget="statusbar"  class="oe_highlight" type="object"/>
+                        <button name="button_depart" string="Depart" widget="statusbar" class="oe_highlight" type="object"/>
+                        <button name="button_cancle" string="Cancle"  widget="statusbar" class="oe_highlight" type="object"/>
+                        <field name="state" widget ="statusbar" statusbar_visible="ordered,depart,cancle"/>
+                    </header>
+                    <group>
+                        <field name="name"/>
+                        <field name="user_email"/>
+                        <field name="mobile"/>
+                        <field name="product_details_ids">
+                                <tree string="Information"  edit="true" editable="bottom">
+                                <field name="name"/>
+                                </tree>
+                        </field>
+                   <!--     <field name="complaints_id"/> !-->
+                      <!--  <field name="company_id"/> !-->
+
+                        <field name="complaints_id">
+                                <tree string="Information"  edit="false" editable="bottom">
+                                <field name="name"/>
+                                </tree>
+                        </field>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="customer_list_view" model="ir.ui.view">
+            <field name="name">customer details list view</field>
+            <field name="model">customer.details</field>
+            <field name="arch" type="xml">
+                <tree string="Customer Information">
+                        <field name="name"/>
+                        <field name="user_email"/>
+                        <field name="mobile"/>
+                        <field name="state"/>
+                   <!--     <field name="company_id"/>
+                             <field name="company_details_ids"/>!-->
+                </tree>
+            </field>
+        </record>
+
+
+         <record id="action_customer_details" model="ir.actions.act_window">
+            <field name="name">Customer</field>
+            <field name="res_model">customer.details</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+        <menuitem id="customer_details_menu" name="Customer Details" action="action_customer_details"
+                  parent="product"/>
+    </data>
+</flectra>

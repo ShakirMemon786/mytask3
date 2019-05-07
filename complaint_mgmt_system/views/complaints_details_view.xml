@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flectra>
+    <data>
+        <record id="complaints_form_view" model="ir.ui.view">
+                <field name="name">Complaints form view</field>
+                <field name="model">complaints.data</field>
+                <field name="arch" type="xml">
+                    <form string="Complaints Information" >
+
+
+                        <group>
+                            <field name="name"/>
+                            <field name="customer_details_line"/>
+                        </group>
+<!--
+                       <group name="vehical_ids">
+                            <label for="vehical_ids" string="Vehical "/>
+                            <field name="vehical_ids" widget="Many2many" nolabel="1">
+                                <tree string="Values" editable="bottom">
+                                     <field name="name"/>
+                                     <field name="type"/>
+
+                                </tree>
+                            </field>
+                        </group>
+!-->
+                    </form>
+                </field>
+
+        </record>
+
+
+        <record id="complaints_list_view" model="ir.ui.view">
+            <field name="name">Complaints list view</field>
+            <field name="model">complaints.data</field>
+            <field name="arch" type="xml">
+                <tree string="Complaints Information">
+
+                            <field name="name"/>
+                            <field name="customer_details_line"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_complaints_data" model="ir.actions.act_window">
+            <field name="name">Complaints</field>
+            <field name="res_model">complaints.data</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="complaints_search_view" model="ir.ui.view" >
+            <field name="name">complaints.search</field>
+            <field name="model">complaints.data</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+               <!--     <field name="is_Available" />
+
+                    <filter string="name" name="name" domain="[('name','=','h')]"/>
+               !-->
+
+                </search>
+            </field>
+        </record>
+
+        <menuitem id="complaints_menu" name="Complaints Details" action="action_complaints_data"
+                  parent="product"/>
+
+
+    </data>
+</flectra>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flectra>
+    <data>
+
+        <record id="product_details_form_view" model="ir.ui.view">
+            <field name="name">product details form view</field>
+            <field name="model">product.details</field>
+            <field name="arch" type="xml">
+                <form string="Product Information">
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="published_date"/>
+                        <field name="price"/>
+                        <field name="product_image"/>
+                        <field name="product_feature_ids"/>
+                        <field name="customer_details_ids"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="product_details_list_view" model="ir.ui.view">
+            <field name="name">product details list view</field>
+            <field name="model">product.details</field>
+            <field name="arch" type="xml">
+                <tree string="Product Information">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="published_date"/>
+                    <field name="price"/>
+                    <field name="product_image"/>
+                    <field name="product_feature_ids"/>
+                    <field name="customer_details_ids"/>
+                </tree>
+            </field>
+        </record>
+
+          <record id="product_search_view" model="ir.ui.view">
+            <field name="name">product details search</field>
+            <field name="model">product.details</field>
+            <field name="arch" type="xml">
+                    <search>
+                        <!--<filter string="account_type" domain="[('account_type','=', 'current')]"/> !-->
+                        <field name="name"/>
+
+                       <!-- <group expand="0" string="Group By...">
+                            <filter string="card_type" domain="[('card_type','=', 'rupay')]" context="{'group_by':'card_type'}"/>
+                        </group> !-->
+                    </search>
+            </field>
+          </record>
+
+
+        <record id="product_search_view_calendar" model="ir.ui.view">
+            <field name="name">calendar</field>
+            <field name="model">product.details</field>
+            <field name="arch" type="xml">
+                <calendar string="Calendar" date_start="published_date" color="name">
+                    <field name="name"/>
+                </calendar>
+            </field>
+        </record>
+
+
+
+        <record id="action_product_details" model="ir.actions.act_window">
+            <field name="name">Product</field>
+            <field name="res_model">product.details</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+
+        </record>
+
+        <menuitem id="product" name="Product"  action="action_product_details"/>
+        <menuitem id="product_details_menu" name="Product Details" action="action_product_details"
+                  parent="product"/>
+<!--
+        <menuitem id="account_management_config" name="Account Config" parent="account_mgmt_root"/>
+
+        <menuitem id="account_mgmt_menu" name="account" action="action_account_details"
+                  parent="account_management_config"/>
+!-->
+
+    </data>
+</flectra>

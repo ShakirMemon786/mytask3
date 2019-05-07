@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flectra>
+    <data>
+        <record id="product__feature_form_view" model="ir.ui.view">
+                <field name="name">Product Features form view</field>
+                <field name="model">product.feature</field>
+                <field name="arch" type="xml">
+                    <form string="Features Information" >
+
+
+                        <group>
+                            <field name="name"/>
+                            <field name="is_Available"/>
+                            <field name="product_detail_ids"/>
+                        </group>
+<!--
+                       <group name="vehical_ids">
+                            <label for="vehical_ids" string="Vehical "/>
+                            <field name="vehical_ids" widget="Many2many" nolabel="1">
+                                <tree string="Values" editable="bottom">
+                                     <field name="name"/>
+                                     <field name="type"/>
+
+                                </tree>
+                            </field>
+                        </group>
+!-->
+                    </form>
+                </field>
+
+        </record>
+
+
+        <record id="product_feature_list_view" model="ir.ui.view">
+            <field name="name">Product Feature list view</field>
+            <field name="model">product.feature</field>
+            <field name="arch" type="xml">
+                <tree string="Feature Information">
+
+                            <field name="name"/>
+                            <field name="is_Available"/>
+                            <field name="product_detail_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_product_feature_data" model="ir.actions.act_window">
+            <field name="name">Features</field>
+            <field name="res_model">product.feature</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="product_feature_details_search_view" model="ir.ui.view" >
+            <field name="name">Feature.search</field>
+            <field name="model">product.feature</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="is_Available" />
+
+                    <filter string="name" name="name" domain="[('name','=','h')]"/>
+
+
+                </search>
+            </field>
+        </record>
+
+        <menuitem id="feature_details_menu" name="Features Details" action="action_product_feature_data"
+                  parent="product"/>
+
+
+    </data>
+</flectra>
